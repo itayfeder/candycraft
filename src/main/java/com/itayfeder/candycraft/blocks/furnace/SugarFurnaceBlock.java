@@ -41,6 +41,17 @@ public class SugarFurnaceBlock extends AbstractFurnaceBlock {
 
     }
 
+    @Override
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+        if (state.get(LIT)) {
+            return 15;
+        }
+        else {
+            return 0;
+        }
+
+    }
+
     /**
      * Called periodically clientside on blocks near the player to show effects (like furnace fire particles). Note that
      * this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless

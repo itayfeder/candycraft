@@ -21,7 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class SugarFurnaceScreen extends ContainerScreen<SugarFurnaceContainer> implements IRecipeShownListener {
-    private static final ResourceLocation field_214089_l = new ResourceLocation("textures/gui/recipe_button.png");
+    private static final ResourceLocation field_214089_l = new ResourceLocation(CandyCraft.MOD_ID, "textures/gui/dark_recipe_button.png");
     public final AbstractRecipeBookGui recipeGui;
     private boolean widthTooNarrowIn;
     private final ResourceLocation guiTexture;
