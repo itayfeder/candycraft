@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "candycraft_resugarized:block/marshmellow/marshmellow_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "candycraft_resugarized:block/marshmellow/marshmellow_log"
+    },
+    "axis=z": {
+      "model": "candycraft_resugarized:block/marshmellow/marshmellow_log",
+      "x": 90
+    }
+  }
+}

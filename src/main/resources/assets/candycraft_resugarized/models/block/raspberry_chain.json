@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_seagrass",
+  "textures": {
+    "texture": "candycraft_resugarized:block/raspberry_chain_top",
+    "particle": "candycraft_resugarized:block/raspberry_chain_top"
+  }
+}

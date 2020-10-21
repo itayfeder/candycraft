@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "candycraft_resugarized:block/dark_marshmellow_planks"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "top_material": {
+      "Properties": {
+        "snowy": "false"
+      },
+      "Name": "candycraft_resugarized:pudding"
+    },
+    "under_material": {
+      "Name": "candycraft_resugarized:flour_block"
+    },
+    "underwater_material": {
+      "Name": "candycraft_resugarized:flour_block"
+    }
+  },
+  "type": "minecraft:default"
+}

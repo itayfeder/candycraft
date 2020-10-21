@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "candycraft_resugarized:block/dark_marshmellow/dark_marshmellow_slab"
+    },
+    "type=top": {
+      "model": "candycraft_resugarized:block/dark_marshmellow/dark_marshmellow_slab_top"
+    },
+    "type=double": {
+      "model": "candycraft_resugarized:block/dark_marshmellow/dark_marshmellow_slab_full"
+    }
+  }
+}

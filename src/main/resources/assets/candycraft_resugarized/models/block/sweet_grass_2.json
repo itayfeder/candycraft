@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "candycraft_resugarized:block/sweet_grass_2",
+    "particle": "candycraft_resugarized:block/sweet_grass_2"
+  }
+}

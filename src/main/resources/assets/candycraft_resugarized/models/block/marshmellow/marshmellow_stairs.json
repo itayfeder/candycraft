@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "candycraft_resugarized:block/marshmellow_planks",
+    "top": "candycraft_resugarized:block/marshmellow_planks",
+    "side": "candycraft_resugarized:block/marshmellow_planks"
+  }
+}

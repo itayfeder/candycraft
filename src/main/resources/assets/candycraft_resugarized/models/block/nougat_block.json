@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "candycraft_resugarized:block/nougat_block",
+    "up": "candycraft_resugarized:block/nougat_block",
+    "north": "candycraft_resugarized:block/nougat_block",
+    "east": "candycraft_resugarized:block/nougat_block",
+    "south": "candycraft_resugarized:block/nougat_block",
+    "west": "candycraft_resugarized:block/nougat_block",
+    "particle": "candycraft_resugarized:block/nougat_block"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "candycraft_resugarized:block/mint",
+    "particle": "candycraft_resugarized:block/mint"
+  }
+}

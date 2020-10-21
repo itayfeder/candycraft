@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "candycraft_resugarized:block/caramel_leaves",
+    "particle": "candycraft_resugarized:block/caramel_leaves"
+  }
+}

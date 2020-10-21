@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "candycraft_resugarized:block/dark_marshmellow_planks",
+    "top": "candycraft_resugarized:block/dark_marshmellow_planks",
+    "side": "candycraft_resugarized:block/dark_marshmellow_planks"
+  }
+}

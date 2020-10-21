@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "candycraft_resugarized:block/tall_raspberry_chain_bottom" },
+        "half=upper":    { "model": "candycraft_resugarized:block/tall_raspberry_chain_top" }
+    }
+}

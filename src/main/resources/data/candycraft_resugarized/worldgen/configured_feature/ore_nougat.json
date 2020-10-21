@@ -1,0 +1,35 @@
+{
+  "config": {
+    "feature": {
+      "config": {
+        "feature": {
+          "config": {
+            "target": {
+              "tag": "candycraft_resugarized:base_stone_candyland",
+              "predicate_type": "minecraft:tag_match"
+            },
+            "state": {
+              "Name": "candycraft_resugarized:nougat_ore"
+            },
+            "size": 3
+          },
+          "type": "minecraft:ore"
+        },
+        "decorator": {
+          "config": {
+            "bottom_offset": 0,
+            "top_offset": 0,
+            "maximum": 32
+          },
+          "type": "minecraft:range"
+        }
+      },
+      "type": "minecraft:decorated"
+    },
+    "decorator": {
+      "config": {},
+      "type": "minecraft:square"
+    }
+  },
+  "type": "minecraft:decorated"
+}

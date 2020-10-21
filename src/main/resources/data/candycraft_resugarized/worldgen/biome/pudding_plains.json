@@ -1,0 +1,54 @@
+{
+  "scale": 0.05,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": -216909,
+    "fog_color": -216909,
+    "water_color": -16757889,
+    "water_fog_color": -16757889
+  },
+  "surface_builder": "candycraft_resugarized:pudding",
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+	  "candycraft_resugarized:ore_licorice",
+	  "candycraft_resugarized:ore_nougat"
+	],
+    [],
+    [
+      "candycraft_resugarized:patch_sweet_grass_pudding"
+	],
+    []
+  ],
+  "starts": [],
+  "spawners": {
+    "monster": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": true,
+  "precipitation": "rain",
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "category": "plains",
+  "depth": 0.125
+}

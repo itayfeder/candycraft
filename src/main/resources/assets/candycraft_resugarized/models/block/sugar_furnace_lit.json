@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "candycraft_resugarized:block/sugar_furnace_top",
+    "up": "candycraft_resugarized:block/sugar_furnace_top",
+    "north": "candycraft_resugarized:block/sugar_furnace_lit",
+    "east": "candycraft_resugarized:block/sugar_furnace_side",
+    "south": "candycraft_resugarized:block/sugar_furnace_side",
+    "west": "candycraft_resugarized:block/sugar_furnace_side",
+    "particle": "candycraft_resugarized:block/sugar_furnace_top"
+  }
+}

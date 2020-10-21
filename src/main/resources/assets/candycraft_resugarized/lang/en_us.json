@@ -1,0 +1,48 @@
+{
+
+  "itemGroup.candycraftTab": "Candycraft",
+
+  "block.candycraft_resugarized.flour_block": "Flour Block",
+  "block.candycraft_resugarized.pudding": "Pudding",
+  "block.candycraft_resugarized.sweet_grass": "Sweet Grass",
+  "block.candycraft_resugarized.chocolate_cobblestone": "Chocolate Cobblestone",
+  "block.candycraft_resugarized.caramel_leaves": "Caramel Leaves",
+  "block.candycraft_resugarized.chocolate_leaves": "Chocolate Leaves",
+  "block.candycraft_resugarized.marshmellow_log": "Marshmellow Log",
+  "block.candycraft_resugarized.dark_marshmellow_log": "Dark Marshmellow Log",
+  "block.candycraft_resugarized.marshmellow_planks": "Marshmellow Planks",
+  "block.candycraft_resugarized.dark_marshmellow_planks": "Dark Marshmellow Planks",
+  "block.candycraft_resugarized.marshmellow_slab": "Marshmellow Slab",
+  "block.candycraft_resugarized.dark_marshmellow_slab": "Dark Marshmellow Slab",
+  "block.candycraft_resugarized.marshmellow_stairs": "Marshmellow Stairs",
+  "block.candycraft_resugarized.dark_marshmellow_stairs": "Dark Marshmellow Stairs",
+  "block.candycraft_resugarized.marshmellow_fence": "Marshmellow Fence",
+  "block.candycraft_resugarized.dark_marshmellow_fence": "Dark Marshmellow Fence",
+  "block.candycraft_resugarized.marshmellow_fence_gate": "Marshmellow Fence Gate",
+  "block.candycraft_resugarized.dark_marshmellow_fence_gate": "Dark Marshmellow Fence Gate",
+  "block.candycraft_resugarized.licorice_ore": "Licorice Ore",
+  "block.candycraft_resugarized.nougat_ore": "Nougat Ore",
+  "block.candycraft_resugarized.nougat_block": "Nougat Block",
+  "block.candycraft_resugarized.nougat_head": "Nougat Head",
+  "block.candycraft_resugarized.mint": "Mint",
+  "block.candycraft_resugarized.raspberry_chain": "Raspberry Chain",
+  "block.candycraft_resugarized.tall_raspberry_chain": "Tall Raspberry Chain",
+
+  "item.candycraft_resugarized.licorice": "Licorice",
+  "item.candycraft_resugarized.cranfish_item": "Cranfish",
+  "item.candycraft_resugarized.cranfish_bucket": "Bucket Of Cranfish",
+
+  "item.candycraft_resugarized.licorice_sword": "Licorice Sword",
+  "item.candycraft_resugarized.licorice_pickaxe": "Licorice Pickaxe",
+  "item.candycraft_resugarized.licorice_axe": "Licorice Axe",
+  "item.candycraft_resugarized.licorice_shovel": "Licorice Shovel",
+  "item.candycraft_resugarized.licorice_hoe": "Licorice Hoe",
+
+  "entity.candycraft_resugarized.gummy_bunny": "Gummy Bunny",
+  "item.candycraft_resugarized.gummy_bunny_spawn_egg": "Gummy Bunny Spawn Egg",
+  "entity.candycraft_resugarized.chewing_gum_beetle": "Chewing Gum Beetle",
+  "item.candycraft_resugarized.chewing_gum_beetle_spawn_egg": "Chewing Gum Beetle Spawn Egg",
+  "entity.candycraft_resugarized.nougat_golem": "Nougat Golem",
+  "entity.candycraft_resugarized.cranfish": "Cranfish",
+  "item.candycraft_resugarized.cranfish_spawn_egg": "Cranfish Spawn Egg"
+}

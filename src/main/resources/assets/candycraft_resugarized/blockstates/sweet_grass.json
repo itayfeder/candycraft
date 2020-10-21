@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+    	{
+    		"model": "candycraft_resugarized:block/sweet_grass"
+    	},
+    	{
+    		"model": "candycraft_resugarized:block/sweet_grass_2"
+    	},
+    	{
+    		"model": "candycraft_resugarized:block/sweet_grass_3"
+    	},
+    	{
+    		"model": "candycraft_resugarized:block/sweet_grass_4"
+    	}
+    ]
+  }
+}

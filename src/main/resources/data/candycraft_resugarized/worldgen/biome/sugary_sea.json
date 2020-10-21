@@ -1,0 +1,54 @@
+{
+  "scale": 0.1,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": -216909,
+    "fog_color": -216909,
+    "water_color": -16757889,
+    "water_fog_color": -16757889
+  },
+  "surface_builder": "minecraft:full_sand",
+  "carvers": {
+    "air": [],
+    "liquid": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "candycraft_resugarized:ore_licorice",
+	  "candycraft_resugarized:ore_nougat"
+    ],
+    [],
+    [
+      "candycraft_resugarized:raspberry_chain_warm",
+      "candycraft_resugarized:water_mint"
+    ],
+    []
+  ],
+  "starts": [],
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "precipitation": "rain",
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "category": "ocean",
+  "depth": -1.0
+}

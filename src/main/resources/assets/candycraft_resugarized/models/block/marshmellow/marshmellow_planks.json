@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "candycraft_resugarized:block/marshmellow_planks",
+    "up": "candycraft_resugarized:block/marshmellow_planks",
+    "north": "candycraft_resugarized:block/marshmellow_planks",
+    "east": "candycraft_resugarized:block/marshmellow_planks",
+    "south": "candycraft_resugarized:block/marshmellow_planks",
+    "west": "candycraft_resugarized:block/marshmellow_planks",
+    "particle": "candycraft_resugarized:block/marshmellow_planks"
+  }
+}
