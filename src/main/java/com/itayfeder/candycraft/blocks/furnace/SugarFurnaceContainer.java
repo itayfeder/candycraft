@@ -1,9 +1,10 @@
 package com.itayfeder.candycraft.blocks.furnace;
 
-import com.itayfeder.candycraft.init.ModBlocks;
 import com.itayfeder.candycraft.init.ModContainers;
+import com.itayfeder.candycraft.init.ModTileEntities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.IRecipeHelperPopulator;
 import net.minecraft.inventory.Inventory;
@@ -14,7 +15,6 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
-import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.IntArray;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,22 +22,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Objects;
 
-public class SugarFurnaceContainer extends Container {
-    public final SugarFurnaceTileEntity tileEntity;
-    private final IWorldPosCallable canInteractWithCallable;
-
+public class SugarFurnaceContainer extends RecipeBookContainer<IInventory> {
     private final IInventory furnaceInventory;
     private final IIntArray furnaceData;
     protected final World world;
-    private final IRecipeType<? extends AbstractCookingRecipe>recipeType;
-
-    public SugarFurnaceContainer(int p_i50097_1_, PlayerInventory p_i50097_2_, final SugarFurnaceTileEntity tile) {
-        this(ModContainers.SUGAR_FURNACE.get(), IRecipeType.SMELTING, p_i50097_1_, p_i50097_2_, tile);
-
-    }
+    private final IRecipeType<? extends AbstractCookingRecipe> recipeType;
+    private final RecipeBookCategory field_242384_g;
 
     public SugarFurnaceContainer(final int windowID, final PlayerInventory playerInv, final PacketBuffer data) {
-        this(windowID, playerInv, getTileEntity(playerInv, data));
+        this(windowID, playerInv);
     }
 
     private static SugarFurnaceTileEntity getTileEntity(final PlayerInventory playerInv, final PacketBuffer data) {
@@ -50,19 +43,30 @@ public class SugarFurnaceContainer extends Container {
         throw new IllegalStateException("TileEntity is not correct " + tileAtPos);
     }
 
-    public SugarFurnaceContainer(ContainerType<?> p_i241922_1_, IRecipeType<? extends AbstractCookingRecipe> p_i241922_2_, int p_i241922_4_, PlayerInventory p_i241922_5_, final SugarFurnaceTileEntity tile) {
+    public SugarFurnaceContainer(int p_i50097_1_, PlayerInventory p_i50097_2_) {
+        this(ModContainers.SUGAR_FURNACE.get(), IRecipeType.SMELTING, RecipeBookCategory.FURNACE, p_i50097_1_, p_i50097_2_);
+    }
+
+    public SugarFurnaceContainer(int p_i50098_1_, PlayerInventory p_i50098_2_, IInventory p_i50098_3_, IIntArray p_i50098_4_) {
+        this(ModContainers.SUGAR_FURNACE.get(), IRecipeType.SMELTING, RecipeBookCategory.FURNACE, p_i50098_1_, p_i50098_2_, p_i50098_3_, p_i50098_4_);
+    }
+
+    protected SugarFurnaceContainer(ContainerType<?> p_i241921_1_, IRecipeType<? extends AbstractCookingRecipe> p_i241921_2_, RecipeBookCategory p_i241921_3_, int p_i241921_4_, PlayerInventory p_i241921_5_) {
+        this(p_i241921_1_, p_i241921_2_, p_i241921_3_, p_i241921_4_, p_i241921_5_, new Inventory(3), new IntArray(4));
+    }
+
+    protected SugarFurnaceContainer(ContainerType<?> p_i241922_1_, IRecipeType<? extends AbstractCookingRecipe> p_i241922_2_, RecipeBookCategory p_i241922_3_, int p_i241922_4_, PlayerInventory p_i241922_5_, IInventory p_i241922_6_, IIntArray p_i241922_7_) {
         super(p_i241922_1_, p_i241922_4_);
-        this.tileEntity = tile;
-        this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
         this.recipeType = p_i241922_2_;
-        assertInventorySize(new Inventory(3), 3);
-        assertIntArraySize(new IntArray(4), 4);
-        this.furnaceInventory = new Inventory(3);
-        this.furnaceData = new IntArray(4);
+        this.field_242384_g = p_i241922_3_;
+        assertInventorySize(p_i241922_6_, 3);
+        assertIntArraySize(p_i241922_7_, 4);
+        this.furnaceInventory = p_i241922_6_;
+        this.furnaceData = p_i241922_7_;
         this.world = p_i241922_5_.player.world;
-        this.addSlot(new Slot(furnaceInventory, 0, 56, 17));
-        this.addSlot(new SugarFurnaceFuelSlot(this, furnaceInventory, 1, 56, 53));
-        this.addSlot(new FurnaceResultSlot(p_i241922_5_.player, furnaceInventory, 2, 116, 35));
+        this.addSlot(new Slot(p_i241922_6_, 0, 56, 17));
+        this.addSlot(new SugarFurnaceFuelSlot(this, p_i241922_6_, 1, 56, 53));
+        this.addSlot(new FurnaceResultSlot(p_i241922_5_.player, p_i241922_6_, 2, 116, 35));
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {
@@ -74,12 +78,7 @@ public class SugarFurnaceContainer extends Container {
             this.addSlot(new Slot(p_i241922_5_, k, 8 + k * 18, 142));
         }
 
-        this.trackIntArray(new IntArray(4));
-    }
-
-    @Override
-    public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(canInteractWithCallable, playerIn, ModBlocks.SUGAR_FURNACE.get());
+        this.trackIntArray(p_i241922_7_);
     }
 
     public void fillStackedContents(RecipeItemHelper itemHelperIn) {
@@ -89,9 +88,42 @@ public class SugarFurnaceContainer extends Container {
 
     }
 
+    public void clear() {
+        this.furnaceInventory.clear();
+    }
+
+    public void func_217056_a(boolean p_217056_1_, IRecipe<?> p_217056_2_, ServerPlayerEntity p_217056_3_) {
+        (new ServerRecipePlacerFurnace<>(this)).place(p_217056_3_, (IRecipe<IInventory>) p_217056_2_, p_217056_1_);
+    }
+
+    public boolean matches(IRecipe<? super IInventory> recipeIn) {
+        return recipeIn.matches(this.furnaceInventory, this.world);
+    }
+
+    public int getOutputSlot() {
+        return 2;
+    }
+
+    public int getWidth() {
+        return 1;
+    }
+
+    public int getHeight() {
+        return 1;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getSize() {
+        return 3;
+    }
+
     /**
      * Determines whether supplied player can use this container
      */
+    public boolean canInteractWith(PlayerEntity playerIn) {
+        return this.furnaceInventory.isUsableByPlayer(playerIn);
+    }
+
     /**
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
@@ -149,7 +181,7 @@ public class SugarFurnaceContainer extends Container {
     }
 
     protected boolean isFuel(ItemStack stack) {
-        return AbstractFurnaceTileEntity.isFuel(stack);
+        return SugarFurnaceTileEntity.isFuel(stack);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -172,5 +204,10 @@ public class SugarFurnaceContainer extends Container {
     @OnlyIn(Dist.CLIENT)
     public boolean isBurning() {
         return this.furnaceData.get(0) > 0;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public RecipeBookCategory func_241850_m() {
+        return this.field_242384_g;
     }
 }

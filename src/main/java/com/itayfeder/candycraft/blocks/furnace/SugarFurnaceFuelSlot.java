@@ -1,6 +1,7 @@
 package com.itayfeder.candycraft.blocks.furnace;
 
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.container.AbstractFurnaceContainer;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
