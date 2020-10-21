@@ -2,6 +2,7 @@ package com.itayfeder.candycraft.init;
 
 import com.itayfeder.candycraft.CandyCraft;
 import com.itayfeder.candycraft.blocks.*;
+import com.itayfeder.candycraft.blocks.furnace.SugarFurnaceBlock;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -36,6 +37,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> MINT_PLANT = BLOCKS.register("mint", MintPlantBlock::new);
     public static final RegistryObject<Block> RASPBERRY_CHAIN = BLOCKS.register("raspberry_chain", RaspberryChainBlock::new);
     public static final RegistryObject<Block> TALL_RASPBERRY_CHAIN = BLOCKS.register("tall_raspberry_chain", TallRaspberryChainBlock::new);
+
+    public static final RegistryObject<Block> SUGAR_FURNACE = BLOCKS.register("sugar_furnace", SugarFurnaceBlock::new);
 
     //
 }

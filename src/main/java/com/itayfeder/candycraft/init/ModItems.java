@@ -38,6 +38,7 @@ public class ModItems {
     public static final RegistryObject<Item> NOUGAT_HEAD_ITEM = ITEMS.register("nougat_head", () -> new BlockItemBase(ModBlocks.NOUGAT_HEAD.get()));
     public static final RegistryObject<Item> MINT_PLANT_ITEM = ITEMS.register("mint", () -> new BlockItemBase(ModBlocks.MINT_PLANT.get()));
     public static final RegistryObject<Item> RASPBERRY_CHAIN_ITEM = ITEMS.register("raspberry_chain", () -> new BlockItemBase(ModBlocks.RASPBERRY_CHAIN.get()));
+    public static final RegistryObject<Item> SUGAR_FURNACE_ITEM = ITEMS.register("sugar_furnace", () -> new BlockItemBase(ModBlocks.SUGAR_FURNACE.get()));
 
     // Items
     public static final RegistryObject<Item> LICORICE = ITEMS.register("licorice", () -> new Item(new Item.Properties().group(CandyCraft.TAB)));

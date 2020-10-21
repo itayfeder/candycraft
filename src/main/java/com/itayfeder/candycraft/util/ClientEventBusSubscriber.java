@@ -2,11 +2,14 @@ package com.itayfeder.candycraft.util;
 
 import com.itayfeder.candycraft.CandyCraft;
 import com.itayfeder.candycraft.Items.ModSpawnEggItem;
+import com.itayfeder.candycraft.blocks.furnace.SugarFurnaceScreen;
 import com.itayfeder.candycraft.client.render.ChewingGumBeetleRenderer;
 import com.itayfeder.candycraft.client.render.CranfishRenderer;
 import com.itayfeder.candycraft.client.render.GummyBunnyRenderer;
 import com.itayfeder.candycraft.client.render.NougatGolemRenderer;
+import com.itayfeder.candycraft.init.ModContainers;
 import com.itayfeder.candycraft.init.ModEntities;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,6 +26,8 @@ public class ClientEventBusSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.CHEWING_GUM_BEETLE.get(), ChewingGumBeetleRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.NOUGAT_GOLEM.get(), NougatGolemRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.CRANFISH.get(), CranfishRenderer::new);
+
+        ScreenManager.registerFactory(ModContainers.SUGAR_FURNACE.get(), SugarFurnaceScreen::new);
     }
 
     @SubscribeEvent

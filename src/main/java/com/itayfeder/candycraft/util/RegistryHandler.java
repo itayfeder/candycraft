@@ -11,6 +11,8 @@ public class RegistryHandler {
         ModGenFeatures.GEN_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModTileEntities.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModContainers.CONTAINER_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
     }

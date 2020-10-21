@@ -7,7 +7,10 @@ import com.itayfeder.candycraft.entities.GummyBunnyEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class GummyBunnyRenderer extends MobRenderer<GummyBunnyEntity, GummyBunnyModel<GummyBunnyEntity>> {
     private static final ResourceLocation BASE = new ResourceLocation(CandyCraft.MOD_ID, "textures/entity/gummy_bunny/base.png");
 

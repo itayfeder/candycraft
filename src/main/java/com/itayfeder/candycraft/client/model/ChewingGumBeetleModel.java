@@ -5,7 +5,10 @@ import com.itayfeder.candycraft.entities.ChewingGumBeetleEntity;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class ChewingGumBeetleModel<T extends ChewingGumBeetleEntity> extends AgeableModel<T> {
     private final ModelRenderer belly;
     private final ModelRenderer body;
