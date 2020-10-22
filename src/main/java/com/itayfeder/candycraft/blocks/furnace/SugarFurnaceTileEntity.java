@@ -2,6 +2,7 @@ package com.itayfeder.candycraft.blocks.furnace;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.itayfeder.candycraft.init.ModItems;
 import com.itayfeder.candycraft.init.ModTileEntities;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerInventory;
@@ -28,8 +29,8 @@ public class SugarFurnaceTileEntity extends AbstractFurnaceTileEntity {
     }
 
     public static final Map<Item, Integer> BurningTimes = ImmutableMap.of(
-            Items.SUGAR, 1200,
-            Items.DIAMOND, 10000
+            Items.SUGAR, 600,
+            ModItems.SUGAR_BLOCK_ITEM.get(), 6000
     );
 
     protected ITextComponent getDefaultName() {
@@ -45,7 +46,6 @@ public class SugarFurnaceTileEntity extends AbstractFurnaceTileEntity {
     }
 
     protected static int findBurnTime(ItemStack fuel) {
-        System.out.println(fuel.getItem().getTranslationKey());
         if (fuel.isEmpty() || !BurningTimes.containsKey(fuel.getItem())) {
             return 0;
         } else {

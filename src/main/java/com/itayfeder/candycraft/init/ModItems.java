@@ -18,6 +18,7 @@ public class ModItems {
     public static final RegistryObject<Item> PUDDING_ITEM = ITEMS.register("pudding", () -> new BlockItemBase(ModBlocks.PUDDING.get()));
     public static final RegistryObject<Item> SWEET_GRASS_ITEM = ITEMS.register("sweet_grass", () -> new BlockItemBase(ModBlocks.SWEET_GRASS.get()));
     public static final RegistryObject<Item> CHOCOLATE_COBBLESTONE_ITEM = ITEMS.register("chocolate_cobblestone", () -> new BlockItemBase(ModBlocks.CHOCOLATE_COBBLESTONE.get()));
+    public static final RegistryObject<Item> SUGAR_BLOCK_ITEM = ITEMS.register("sugar_block", () -> new BlockItemBase(ModBlocks.SUGAR_BLOCK.get()));
     public static final RegistryObject<Item> CARAMEL_LEAVES_ITEM = ITEMS.register("caramel_leaves", () -> new BlockItemBase(ModBlocks.CARAMEL_LEAVES.get()));
     public static final RegistryObject<Item> CHOCOLATE_LEAVES_ITEM = ITEMS.register("chocolate_leaves", () -> new BlockItemBase(ModBlocks.CHOCOLATE_LEAVES.get()));
     public static final RegistryObject<Item> MARSHMELLOW_LOG_ITEM = ITEMS.register("marshmellow_log", () -> new BlockItemBase(ModBlocks.MARSHMELLOW_LOG.get()));

@@ -6,6 +6,7 @@
   "block.candycraft_resugarized.pudding": "Pudding",
   "block.candycraft_resugarized.sweet_grass": "Sweet Grass",
   "block.candycraft_resugarized.chocolate_cobblestone": "Chocolate Cobblestone",
+  "block.candycraft_resugarized.sugar_block": "Sugar Block",
   "block.candycraft_resugarized.caramel_leaves": "Caramel Leaves",
   "block.candycraft_resugarized.chocolate_leaves": "Chocolate Leaves",
   "block.candycraft_resugarized.marshmellow_log": "Marshmellow Log",
@@ -28,6 +29,7 @@
   "block.candycraft_resugarized.raspberry_chain": "Raspberry Chain",
   "block.candycraft_resugarized.tall_raspberry_chain": "Tall Raspberry Chain",
   "block.candycraft_resugarized.sugar_furnace": "Sugar Furnace",
+  "block.candycraft_resugarized.candyland_portal": "Sugar Furnace",
 
   "container.sugar_furnace": "Sugar Furnace",
 

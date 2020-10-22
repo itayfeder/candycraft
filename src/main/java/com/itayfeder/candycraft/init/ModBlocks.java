@@ -16,6 +16,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> PUDDING = BLOCKS.register("pudding", PuddingBlock::new);
     public static final RegistryObject<Block> SWEET_GRASS = BLOCKS.register("sweet_grass", SweetGrassBlock::new);
     public static final RegistryObject<Block> CHOCOLATE_COBBLESTONE = BLOCKS.register("chocolate_cobblestone", ChocolateCobblestoneBlock::new);
+    public static final RegistryObject<Block> SUGAR_BLOCK = BLOCKS.register("sugar_block", SugarBlock::new);
     public static final RegistryObject<Block> CARAMEL_LEAVES = BLOCKS.register("caramel_leaves", CaramelLeavesBlock::new);
     public static final RegistryObject<Block> CHOCOLATE_LEAVES = BLOCKS.register("chocolate_leaves", ChocolateLeavesBlock::new);
     public static final RegistryObject<Block> MARSHMELLOW_LOG = BLOCKS.register("marshmellow_log", MarshmellowLogBlock::new);

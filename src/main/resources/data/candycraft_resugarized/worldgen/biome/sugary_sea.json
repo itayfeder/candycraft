@@ -9,8 +9,8 @@
     },
     "sky_color": -216909,
     "fog_color": -216909,
-    "water_color": -16757889,
-    "water_fog_color": -16757889
+    "water_color": 16751576,
+    "water_fog_color": 16751576
   },
   "surface_builder": "minecraft:full_sand",
   "carvers": {
@@ -46,7 +46,7 @@
   },
   "spawn_costs": {},
   "player_spawn_friendly": false,
-  "precipitation": "rain",
+  "precipitation": "none",
   "temperature": 0.5,
   "downfall": 0.5,
   "category": "ocean",
