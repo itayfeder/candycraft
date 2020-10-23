@@ -13,6 +13,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.PointOfInterest;
 import net.minecraft.village.PointOfInterestManager;
 import net.minecraft.village.PointOfInterestType;
+import net.minecraft.world.World;
 import net.minecraft.world.border.WorldBorder;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
@@ -52,27 +53,27 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
         });
     }
 
-    public Optional<TeleportationRepositioner.Result> buildPortal(BlockPos p_242956_1_, Direction.Axis p_242956_2_) {
+    public Optional<TeleportationRepositioner.Result> buildPortal(BlockPos p_242956_1_, Direction.Axis p_242956_2_, World newWorld) {
         Direction direction = Direction.getFacingFromAxis(Direction.AxisDirection.POSITIVE, p_242956_2_);
         double d0 = -1.0D;
         BlockPos blockpos = null;
         double d1 = -1.0D;
         BlockPos blockpos1 = null;
-        WorldBorder worldborder = this.world.getWorldBorder();
-        int i = this.world.func_234938_ad_() - 1;
+        WorldBorder worldborder = newWorld.getWorldBorder();
+        int i = newWorld.func_234938_ad_() - 1;
         BlockPos.Mutable blockpos$mutable = p_242956_1_.func_239590_i_();
 
         for(BlockPos.Mutable blockpos$mutable1 : BlockPos.func_243514_a(p_242956_1_, 16, Direction.EAST, Direction.SOUTH)) {
-            int j = Math.min(i, this.world.getHeight(Heightmap.Type.MOTION_BLOCKING, blockpos$mutable1.getX(), blockpos$mutable1.getZ()));
+            int j = Math.min(i, newWorld.getHeight(Heightmap.Type.MOTION_BLOCKING, blockpos$mutable1.getX(), blockpos$mutable1.getZ()));
             int k = 1;
             if (worldborder.contains(blockpos$mutable1) && worldborder.contains(blockpos$mutable1.move(direction, 1))) {
                 blockpos$mutable1.move(direction.getOpposite(), 1);
 
                 for(int l = j; l >= 0; --l) {
                     blockpos$mutable1.setY(l);
-                    if (this.world.isAirBlock(blockpos$mutable1)) {
+                    if (newWorld.isAirBlock(blockpos$mutable1)) {
                         int i1;
-                        for(i1 = l; l > 0 && this.world.isAirBlock(blockpos$mutable1.move(Direction.DOWN)); --l) {
+                        for(i1 = l; l > 0 && newWorld.isAirBlock(blockpos$mutable1.move(Direction.DOWN)); --l) {
                         }
 
                         if (l + 4 <= i) {
@@ -104,7 +105,7 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
         }
 
         if (d0 == -1.0D) {
-            blockpos = (new BlockPos(p_242956_1_.getX(), MathHelper.clamp(p_242956_1_.getY(), 70, this.world.func_234938_ad_() - 10), p_242956_1_.getZ())).toImmutable();
+            blockpos = (new BlockPos(p_242956_1_.getX(), MathHelper.clamp(p_242956_1_.getY(), 70, newWorld.func_234938_ad_() - 10), p_242956_1_.getZ())).toImmutable();
             Direction direction1 = direction.rotateY();
             if (!worldborder.contains(blockpos)) {
                 return Optional.empty();
@@ -115,7 +116,7 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
                     for(int i3 = -1; i3 < 3; ++i3) {
                         BlockState blockstate1 = i3 < 0 ? ModBlocks.SUGAR_BLOCK.get().getDefaultState() : Blocks.AIR.getDefaultState();
                         blockpos$mutable.func_239621_a_(blockpos, k2 * direction.getXOffset() + l1 * direction1.getXOffset(), i3, k2 * direction.getZOffset() + l1 * direction1.getZOffset());
-                        this.world.setBlockState(blockpos$mutable, blockstate1);
+                        newWorld.setBlockState(blockpos$mutable, blockstate1);
                     }
                 }
             }
@@ -125,7 +126,7 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
             for(int i2 = -1; i2 < 4; ++i2) {
                 if (k1 == -1 || k1 == 2 || i2 == -1 || i2 == 3) {
                     blockpos$mutable.func_239621_a_(blockpos, k1 * direction.getXOffset(), i2, k1 * direction.getZOffset());
-                    this.world.setBlockState(blockpos$mutable, ModBlocks.SUGAR_BLOCK.get().getDefaultState(), 3);
+                    newWorld.setBlockState(blockpos$mutable, ModBlocks.SUGAR_BLOCK.get().getDefaultState(), 3);
                 }
             }
         }
@@ -135,7 +136,7 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
         for(int j2 = 0; j2 < 2; ++j2) {
             for(int l2 = 0; l2 < 3; ++l2) {
                 blockpos$mutable.func_239621_a_(blockpos, j2 * direction.getXOffset(), l2, j2 * direction.getZOffset());
-                this.world.setBlockState(blockpos$mutable, blockstate, 18);
+                newWorld.setBlockState(blockpos$mutable, blockstate, 18);
             }
         }
 

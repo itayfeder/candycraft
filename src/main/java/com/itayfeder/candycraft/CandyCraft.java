@@ -6,6 +6,7 @@ import com.itayfeder.candycraft.entities.GummyBunnyEntity;
 import com.itayfeder.candycraft.entities.NougatGolemEntity;
 import com.itayfeder.candycraft.init.ModEntities;
 import com.itayfeder.candycraft.util.CarverReflection;
+import com.itayfeder.candycraft.util.ModVariables;
 import com.itayfeder.candycraft.util.RegistryHandler;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -22,6 +23,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,6 +33,10 @@ public class CandyCraft
 {
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "candycraft_resugarized";
+
+    public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "candycraft"),
+            () -> "1", "1"::equals, "1"::equals);
+
 
     public static final RegistryKey<World> DIMENSION = RegistryKey.func_240903_a_(Registry.field_239699_ae_, new ResourceLocation(MOD_ID, "candyland"));
 
@@ -40,6 +47,8 @@ public class CandyCraft
         RegistryHandler.init();
 
         MinecraftForge.EVENT_BUS.register(this);
+        //MinecraftForge.EVENT_BUS.register(new ModVariables());
+
     }
 
     private void setup(final FMLCommonSetupEvent event)
