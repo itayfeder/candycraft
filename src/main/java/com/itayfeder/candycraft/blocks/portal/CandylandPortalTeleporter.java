@@ -52,7 +52,7 @@ public class CandylandPortalTeleporter implements net.minecraftforge.common.util
         });
     }
 
-    public Optional<TeleportationRepositioner.Result> func_242956_a(BlockPos p_242956_1_, Direction.Axis p_242956_2_) {
+    public Optional<TeleportationRepositioner.Result> buildPortal(BlockPos p_242956_1_, Direction.Axis p_242956_2_) {
         Direction direction = Direction.getFacingFromAxis(Direction.AxisDirection.POSITIVE, p_242956_2_);
         double d0 = -1.0D;
         BlockPos blockpos = null;

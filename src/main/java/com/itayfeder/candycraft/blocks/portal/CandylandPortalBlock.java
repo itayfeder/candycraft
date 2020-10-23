@@ -92,7 +92,7 @@ public class CandylandPortalBlock extends Block {
                     Entity repositionedEntity = repositionEntity.apply(false);
                     repositionedEntity.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
                     ((World) destWorld).getChunk(pos.getX(), pos.getZ()).setLoaded(true);
-                    this.func_242956_a(new BlockPos(repositionedEntity.getPosX(), repositionedEntity.getPosY(), repositionedEntity.getPosZ()), direction$axis1);
+                    this.buildPortal(new BlockPos(repositionedEntity.getPosX(), repositionedEntity.getPosY(), repositionedEntity.getPosZ()), direction$axis1);
                     return repositionedEntity;
                 }
             });
