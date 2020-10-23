@@ -12,6 +12,10 @@ import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +30,9 @@ public class CandyCraft
 {
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "candycraft_resugarized";
+
+    public static final RegistryKey<World> DIMENSION = RegistryKey.func_240903_a_(Registry.field_239699_ae_, new ResourceLocation(MOD_ID, "candyland"));
+
     public CandyCraft() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
