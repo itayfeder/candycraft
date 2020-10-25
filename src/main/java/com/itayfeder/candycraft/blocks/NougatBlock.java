@@ -1,5 +1,7 @@
 package com.itayfeder.candycraft.blocks;
 
+import com.itayfeder.candycraft.CandyCraft;
+import com.itayfeder.candycraft.blocks.portal.CandylandPortalSize;
 import com.itayfeder.candycraft.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -41,4 +43,26 @@ public class NougatBlock extends Block {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
     }
+
+    /*public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!oldState.isIn(state.getBlock())) {
+            if (func_242649_a(worldIn)) {
+                Optional<CandylandPortalSize> optional = CandylandPortalSize.func_242964_a(worldIn, pos, Direction.Axis.X);
+                if (optional.isPresent()) {
+                    System.out.println("Placing Portal!!!");
+                    optional.get().placePortalBlocks();
+                    return;
+                }
+            }
+
+            if (!state.isValidPosition(worldIn, pos)) {
+                worldIn.removeBlock(pos, false);
+            }
+
+        }
+    }
+
+    private static boolean func_242649_a(World p_242649_0_) {
+        return p_242649_0_.func_234923_W_() == World.field_234918_g_ || p_242649_0_.func_234923_W_() == CandyCraft.DIMENSION;
+    }*/
 }

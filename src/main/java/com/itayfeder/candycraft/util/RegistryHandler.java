@@ -15,6 +15,8 @@ public class RegistryHandler {
         ModContainers.CONTAINER_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
+        ModParticles.PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
     }
 
     public static void clientInit() {
@@ -22,6 +24,7 @@ public class RegistryHandler {
         RenderTypeLookup.setRenderLayer(ModBlocks.MINT_PLANT.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.RASPBERRY_CHAIN.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TALL_RASPBERRY_CHAIN.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CANDYLAND_PORTAL.get(), RenderType.getTranslucent());
     }
 
 }

@@ -2,16 +2,11 @@ package com.itayfeder.candycraft.blocks.portal;
 
 import com.itayfeder.candycraft.CandyCraft;
 import com.itayfeder.candycraft.init.ModBlocks;
-import com.itayfeder.candycraft.util.ModVariables;
+import com.itayfeder.candycraft.init.ModParticles;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -20,7 +15,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
@@ -28,12 +22,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-import java.util.Optional;
 import java.util.Random;
-import java.util.function.Function;
 
 public class CandylandPortalBlock extends Block {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -79,7 +70,7 @@ public class CandylandPortalBlock extends Block {
         Direction.Axis direction$axis = facing.getAxis();
         Direction.Axis direction$axis1 = stateIn.get(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && !facingState.isIn(this) && !(new PortalSize(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return !flag && !facingState.isIn(this) && !(new CandylandPortalSize(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
@@ -87,7 +78,6 @@ public class CandylandPortalBlock extends Block {
         super.onEntityCollision(state, worldIn, pos, entityIn);
         Direction.Axis direction$axis1 = state.get(AXIS);
         if(!worldIn.isRemote){
-
             CandylandPortalTeleporter tp;
             if (entityIn.getEntityWorld() == ((ServerWorld)worldIn).getServer().getWorld(CandyCraft.DIMENSION)) {
                 tp = new CandylandPortalTeleporter(((ServerWorld)worldIn).getServer().getWorld(World.field_234918_g_));
@@ -99,11 +89,6 @@ public class CandylandPortalBlock extends Block {
                 entityIn.changeDimension(((ServerWorld)worldIn).getServer().getWorld(CandyCraft.DIMENSION), tp);
             }
 
-            entityIn.getCapability(ModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                capability.CandylandPortalTimer = 100;
-                capability.syncPlayerVariables(entityIn);
-            });
-
             if (!DoesHavePortal((int)Math.round(entityIn.getPosX()), (int)Math.round(entityIn.getPosY()), (int)Math.round(entityIn.getPosZ()), entityIn.getEntityWorld())) {
                 tp.buildPortal(new BlockPos(entityIn.getPosX(), entityIn.getPosY(), entityIn.getPosZ()), direction$axis1, entityIn.getEntityWorld());
                 BlockPos p = LookForPortal((int)Math.round(entityIn.getPosX()), (int)Math.round(entityIn.getPosY()), (int)Math.round(entityIn.getPosZ()), entityIn.getEntityWorld());
@@ -111,60 +96,54 @@ public class CandylandPortalBlock extends Block {
             }
             else {
                 BlockPos p = LookForPortal((int)Math.round(entityIn.getPosX()), (int)Math.round(entityIn.getPosY()), (int)Math.round(entityIn.getPosZ()), entityIn.getEntityWorld());
-                TeleportToPortal(p, entityIn, direction$axis1);
+                Direction.Axis axis = entityIn.getEntityWorld().getBlockState(p).get(CandylandPortalBlock.AXIS);
+                TeleportToPortal(p, entityIn, axis);
             }
         }
     }
 
-    public void TeleportToPortal(BlockPos p, Entity entityIn, Direction.Axis direction$axis1) {
-        if (direction$axis1 == Direction.Axis.X) {
-            BlockPos b = p.add(0, 0, 2);
-            BlockPos b2 = p.add(0, 0, -2);
-            boolean DoesBlockMovement = (boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b).getBlock(), "field_235688_at_") || entityIn.getEntityWorld().isAirBlock(b);
-            boolean DoesBlockMovement2 = (boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b2).getBlock(), "field_235688_at_") || entityIn.getEntityWorld().isAirBlock(b2);
+    public void TeleportToPortal(BlockPos p, Entity entityIn, Direction.Axis axis) {
+        if (axis == Direction.Axis.X) {
+            BlockPos b = new BlockPos(p.getX(), p.getY(), p.getZ() + 1);
+            BlockPos b2 = new BlockPos(p.getX(), p.getY(), p.getZ() - 1);
+            boolean DoesBlockMovement = !((boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b).getBlock(), "field_235688_at_")) || entityIn.getEntityWorld().isAirBlock(b);
+            boolean DoesBlockMovement2 = !((boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b2).getBlock(), "field_235688_at_")) || entityIn.getEntityWorld().isAirBlock(b2);
             if (DoesBlockMovement && DoesBlockMovement2) {
                 entityIn.setPositionAndUpdate(p.getX() + 1, p.getY(), p.getZ() + 1.5);
-                System.out.println("AAAAA 1");
-            }
-            else if (!DoesBlockMovement && !DoesBlockMovement2) {
-                entityIn.setPositionAndUpdate(p.getX() - 1, p.getY(), p.getZ() - 1.5);
-                System.out.println("BBBBB 1");
 
             }
-            else if (!DoesBlockMovement && !DoesBlockMovement2) {
+            else if (DoesBlockMovement && !DoesBlockMovement2) {
                 entityIn.setPositionAndUpdate(p.getX() + 1, p.getY(), p.getZ() + 1.5);
-                System.out.println("CCCCC 1");
+
+            }
+            else if (!DoesBlockMovement && DoesBlockMovement2) {
+                entityIn.setPositionAndUpdate(p.getX() + 1, p.getY(), p.getZ() - 0.5);
 
             } else {
                 entityIn.getEntityWorld().setBlockState(new BlockPos(p.getX() + 1, p.getY(), p.getZ() + 1.5), Blocks.AIR.getDefaultState());
                 entityIn.getEntityWorld().setBlockState(new BlockPos(p.getX() + 1, p.getY() + 1, p.getZ() + 1.5), Blocks.AIR.getDefaultState());
-                entityIn.setPositionAndUpdate(p.getX(), p.getY(), p.getZ() + 2);
-                System.out.println("DDDDD 1");
+                entityIn.setPositionAndUpdate(p.getX(), p.getY(), p.getZ() + 1.5);
             }
         }
         else {
-            BlockPos b = p.add(2, 0, 0);
-            BlockPos b2 = p.add(-2, 0, 0);
-            boolean DoesBlockMovement = (boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b).getBlock(), "field_235688_at_") || entityIn.getEntityWorld().isAirBlock(b);
-            boolean DoesBlockMovement2 = (boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b2).getBlock(), "field_235688_at_") || entityIn.getEntityWorld().isAirBlock(b2);
+            BlockPos b = new BlockPos(p.getX() + 1, p.getY(), p.getZ());
+            BlockPos b2 = new BlockPos(p.getX() - 1, p.getY(), p.getZ());
+            boolean DoesBlockMovement = !((boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b).getBlock(), "field_235688_at_")) || entityIn.getEntityWorld().isAirBlock(b);
+            boolean DoesBlockMovement2 = !((boolean)ObfuscationReflectionHelper.getPrivateValue(AbstractBlock.class, entityIn.getEntityWorld().getBlockState(b2).getBlock(), "field_235688_at_")) || entityIn.getEntityWorld().isAirBlock(b2);
             if (DoesBlockMovement && DoesBlockMovement2) {
-                entityIn.setPositionAndUpdate(p.getX() + 1.5, p.getY(), p.getZ() + 1);
-                System.out.println("AAAAA 2");
+                entityIn.setPositionAndUpdate(p.getX() -0.5, p.getY(), p.getZ() + 1);
             }
             else if (!DoesBlockMovement && DoesBlockMovement2) {
-                entityIn.setPositionAndUpdate(p.getX() - 1.5, p.getY(), p.getZ() - 1);
-                System.out.println("BBBBB 2");
+                entityIn.setPositionAndUpdate(p.getX() -0.5, p.getY(), p.getZ() + 1);
 
             }
             else if (DoesBlockMovement && !DoesBlockMovement2) {
                 entityIn.setPositionAndUpdate(p.getX() + 1.5, p.getY(), p.getZ() + 1);
-                System.out.println("CCCCC 2");
 
             } else {
                 entityIn.getEntityWorld().setBlockState(new BlockPos(p.getX() + 1.5, p.getY(), p.getZ() + 1), Blocks.AIR.getDefaultState());
                 entityIn.getEntityWorld().setBlockState(new BlockPos(p.getX() + 1.5, p.getY() + 1, p.getZ() + 1), Blocks.AIR.getDefaultState());
-                entityIn.setPositionAndUpdate(p.getX() + 3, p.getY(), p.getZ());
-                System.out.println("DDDDD 2");
+                entityIn.setPositionAndUpdate(p.getX() + 1.5, p.getY(), p.getZ());
 
             }
         }
@@ -223,7 +202,7 @@ public class CandylandPortalBlock extends Block {
                 d5 = (double)(rand.nextFloat() * 2.0F * (float)j);
             }
 
-            worldIn.addParticle(ParticleTypes.PORTAL, d0, d1, d2, d3, d4, d5);
+            worldIn.addParticle(ModParticles.CARAMEL_PORTAL.get(), d0, d1, d2, d3, d4, d5);
         }
 
     }
